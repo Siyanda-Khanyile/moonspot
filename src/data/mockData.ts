@@ -1,0 +1,341 @@
+import type { Artist, User, Booking, Chat, Genre, Message } from '@/types';
+
+// Mock Users
+export const mockUsers: User[] = [
+  {
+    id: 'admin-1',
+    fullName: 'Sarah Mitchell',
+    email: 'sarah@moonspot.com',
+    role: 'admin',
+    avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop',
+    createdAt: new Date('2024-01-15'),
+  },
+  {
+    id: 'org-1',
+    fullName: 'John Anderson',
+    email: 'john@eventpro.com',
+    role: 'organiser',
+    avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop',
+    createdAt: new Date('2024-02-20'),
+  },
+  {
+    id: 'org-2',
+    fullName: 'Lisa Thompson',
+    email: 'lisa@musicfest.com',
+    role: 'organiser',
+    avatarUrl: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop',
+    createdAt: new Date('2024-03-10'),
+  },
+];
+
+// Mock Artists
+export const mockArtists: Artist[] = [
+  {
+    id: 'artist-1',
+    name: 'DJ Black Coffee',
+    realName: 'Nkosinathi Maphumulo',
+    photoUrl: 'https://images.unsplash.com/photo-1571266028243-3716f02d2d2e?w=400&h=400&fit=crop',
+    bannerImageUrl: 'https://images.unsplash.com/photo-1571266028243-3716f02d2d2e?w=800&h=400&fit=crop',
+    genre: 'House',
+    category: 'DJ',
+    bio: 'Grammy-winning South African DJ and record producer. Known for blending traditional African rhythms with modern electronic music.',
+    location: 'Johannesburg, SA',
+    isVerified: true,
+    socialLinks: {
+      instagram: 'https://instagram.com',
+      facebook: 'https://facebook.com',
+      youtube: 'https://youtube.com',
+      spotify: 'https://spotify.com',
+    },
+    isActive: true,
+  },
+  {
+    id: 'artist-2',
+    name: 'Burna Boy',
+    realName: 'Damini Ebunoluwa Ogulu',
+    photoUrl: 'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?w=400&h=400&fit=crop',
+    bannerImageUrl: 'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?w=800&h=400&fit=crop',
+    genre: 'Afrobeat',
+    category: 'Vocalist',
+    bio: 'Nigerian singer, songwriter, and record producer. Known as the "African Giant" for his global impact on Afrobeat music.',
+    location: 'Lagos, Nigeria',
+    isVerified: true,
+    socialLinks: {
+      instagram: 'https://instagram.com',
+      spotify: 'https://spotify.com',
+    },
+    isActive: true,
+  },
+  {
+    id: 'artist-3',
+    name: 'Uncle Waffles',
+    realName: 'Lungelihle Zwane',
+    photoUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop',
+    bannerImageUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&h=400&fit=crop',
+    genre: 'Amapiano',
+    category: 'DJ',
+    bio: 'Swazi-born South African DJ and producer who took the world by storm with her viral Amapiano performances.',
+    location: 'Johannesburg, SA',
+    isVerified: true,
+    socialLinks: {
+      instagram: 'https://instagram.com',
+      youtube: 'https://youtube.com',
+    },
+    isActive: true,
+  },
+  {
+    id: 'artist-4',
+    name: 'Tyla',
+    realName: 'Tyla Laura Seethal',
+    photoUrl: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&h=400&fit=crop',
+    bannerImageUrl: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800&h=400&fit=crop',
+    genre: 'Amapiano',
+    category: 'Vocalist',
+    bio: 'South African singer and songwriter. Rising star known for her unique blend of Amapiano and pop music.',
+    location: 'Johannesburg, SA',
+    isVerified: true,
+    socialLinks: {
+      instagram: 'https://instagram.com',
+      spotify: 'https://spotify.com',
+    },
+    isActive: true,
+  },
+  {
+    id: 'artist-5',
+    name: 'Kabza De Small',
+    realName: 'Kabelo Motha',
+    photoUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop',
+    bannerImageUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&h=400&fit=crop',
+    genre: 'Amapiano',
+    category: 'Producer',
+    bio: 'South African DJ and record producer. Known as the "King of Amapiano" for his pioneering role in the genre.',
+    location: 'Pretoria, SA',
+    isVerified: true,
+    socialLinks: {
+      instagram: 'https://instagram.com',
+      facebook: 'https://facebook.com',
+      spotify: 'https://spotify.com',
+    },
+    isActive: true,
+  },
+  {
+    id: 'artist-6',
+    name: 'Major Lazer',
+    realName: 'Diplo, Walshy Fire, Ape Drums',
+    photoUrl: 'https://images.unsplash.com/photo-1529068755536-a5ade0dcb4e8?w=400&h=400&fit=crop',
+    bannerImageUrl: 'https://images.unsplash.com/photo-1529068755536-a5ade0dcb4e8?w=800&h=400&fit=crop',
+    genre: 'Electronic',
+    category: 'Band',
+    bio: 'American electronic dance music DJ trio. Known for their high-energy performances and global hits.',
+    location: 'Los Angeles, USA',
+    isVerified: true,
+    socialLinks: {
+      instagram: 'https://instagram.com',
+      youtube: 'https://youtube.com',
+      spotify: 'https://spotify.com',
+    },
+    isActive: true,
+  },
+  {
+    id: 'artist-7',
+    name: 'Focalistic',
+    realName: 'Lethabo Sebetso',
+    photoUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop',
+    bannerImageUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&h=400&fit=crop',
+    genre: 'Amapiano',
+    category: 'Rapper',
+    bio: 'South African rapper and DJ. Pioneer of "Pitori Maradona" sound blending hip-hop with Amapiano.',
+    location: 'Pretoria, SA',
+    isVerified: true,
+    socialLinks: {
+      instagram: 'https://instagram.com',
+      spotify: 'https://spotify.com',
+    },
+    isActive: true,
+  },
+  {
+    id: 'artist-8',
+    name: 'DBN Gogo',
+    realName: 'Mandisa Radebe',
+    photoUrl: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&h=400&fit=crop',
+    bannerImageUrl: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&h=400&fit=crop',
+    genre: 'Amapiano',
+    category: 'DJ',
+    bio: 'South African DJ and music producer. Rising star in the Amapiano scene with unique mixing style.',
+    location: 'Durban, SA',
+    isVerified: true,
+    socialLinks: {
+      instagram: 'https://instagram.com',
+      spotify: 'https://spotify.com',
+    },
+    isActive: true,
+  },
+];
+
+// Mock Genres
+export const mockGenres: Genre[] = [
+  { id: 'genre-1', name: 'Amapiano', gradient: 'from-pink-500 to-purple-600', icon: '🎹' },
+  { id: 'genre-2', name: 'Techno', gradient: 'from-blue-500 to-cyan-500', icon: '🎛️' },
+  { id: 'genre-3', name: 'R&B', gradient: 'from-purple-500 to-indigo-600', icon: '🎤' },
+  { id: 'genre-4', name: 'Afrobeat', gradient: 'from-green-500 to-yellow-500', icon: '🥁' },
+  { id: 'genre-5', name: 'House', gradient: 'from-orange-500 to-red-500', icon: '🎧' },
+  { id: 'genre-6', name: 'Electronic', gradient: 'from-teal-500 to-blue-500', icon: '⚡' },
+];
+
+// Mock Bookings
+export const mockBookings: Booking[] = [
+  {
+    id: 'booking-1',
+    artistId: 'artist-1',
+    organiserId: 'org-1',
+    eventName: 'Moonlight Night',
+    eventDate: new Date('2026-04-15'),
+    duration: '3 hours',
+    location: 'Durban | Urban Lounge',
+    riders: 'VIP dressing room, bottled water',
+    eventType: 'Club Event',
+    notes: 'Looking forward to an amazing show!',
+    status: 'active',
+    createdAt: new Date('2026-03-01'),
+    updatedAt: new Date('2026-03-02'),
+  },
+  {
+    id: 'booking-2',
+    artistId: 'artist-3',
+    organiserId: 'org-1',
+    eventName: 'Ekasi 2.0',
+    eventDate: new Date('2026-03-20'),
+    duration: '2 hours',
+    location: 'Johannesburg | Zone 6 Venue',
+    riders: 'Sound check at 6pm',
+    eventType: 'Private Party',
+    notes: 'Birthday celebration event',
+    status: 'visited',
+    createdAt: new Date('2026-02-15'),
+    updatedAt: new Date('2026-03-20'),
+  },
+  {
+    id: 'booking-3',
+    artistId: 'artist-2',
+    organiserId: 'org-1',
+    eventName: 'Summer Festival',
+    eventDate: new Date('2026-05-10'),
+    duration: '1 hour',
+    location: 'Cape Town | DHL Stadium',
+    eventType: 'Festival',
+    status: 'pending',
+    createdAt: new Date('2026-03-05'),
+    updatedAt: new Date('2026-03-05'),
+  },
+  {
+    id: 'booking-4',
+    artistId: 'artist-5',
+    organiserId: 'org-2',
+    eventName: 'Corporate Gala',
+    eventDate: new Date('2026-04-01'),
+    duration: '4 hours',
+    location: 'Sandton | Convention Centre',
+    eventType: 'Corporate',
+    status: 'cancelled',
+    createdAt: new Date('2026-02-20'),
+    updatedAt: new Date('2026-02-25'),
+  },
+  {
+    id: 'booking-5',
+    artistId: 'artist-4',
+    organiserId: 'org-2',
+    eventName: 'Wedding Reception',
+    eventDate: new Date('2026-06-15'),
+    duration: '2 hours',
+    location: 'Pretoria | Botanical Gardens',
+    eventType: 'Wedding',
+    status: 'active',
+    createdAt: new Date('2026-03-08'),
+    updatedAt: new Date('2026-03-09'),
+  },
+];
+
+// Mock Messages
+const mockMessages1: Message[] = [
+  {
+    id: 'msg-1',
+    senderId: 'org-1',
+    text: 'Hi! Looking forward to the event next month. Can we discuss the setup requirements?',
+    timestamp: new Date('2026-03-10T10:00:00'),
+    read: true,
+  },
+  {
+    id: 'msg-2',
+    senderId: 'admin-1',
+    text: 'Hello! Absolutely. We will need a minimum stage size of 20x15 feet and access to power outlets.',
+    timestamp: new Date('2026-03-10T10:15:00'),
+    read: true,
+  },
+  {
+    id: 'msg-3',
+    senderId: 'org-1',
+    text: 'Perfect, we have that covered. What time should the artist arrive for sound check?',
+    timestamp: new Date('2026-03-10T10:30:00'),
+    read: true,
+  },
+  {
+    id: 'msg-4',
+    senderId: 'admin-1',
+    text: 'Sound check is scheduled for 4 PM, 2 hours before the show starts.',
+    timestamp: new Date('2026-03-10T10:45:00'),
+    read: false,
+  },
+];
+
+const mockMessages2: Message[] = [
+  {
+    id: 'msg-5',
+    senderId: 'org-2',
+    text: 'Thank you for accepting our booking! We are so excited.',
+    timestamp: new Date('2026-03-09T14:00:00'),
+    read: true,
+  },
+  {
+    id: 'msg-6',
+    senderId: 'admin-1',
+    text: 'You are welcome! We are looking forward to making your wedding reception special.',
+    timestamp: new Date('2026-03-09T14:30:00'),
+    read: true,
+  },
+];
+
+// Mock Chats
+export const mockChats: Chat[] = [
+  {
+    chatId: 'chat-1',
+    bookingId: 'booking-1',
+    participants: ['admin-1', 'org-1'],
+    messages: mockMessages1,
+    createdAt: new Date('2026-03-02'),
+  },
+  {
+    chatId: 'chat-2',
+    bookingId: 'booking-5',
+    participants: ['admin-1', 'org-2'],
+    messages: mockMessages2,
+    createdAt: new Date('2026-03-09'),
+  },
+];
+
+// Filter categories
+export const artistCategories = [
+  { id: 'all', label: 'All Artists' },
+  { id: 'producers', label: 'Producers' },
+  { id: 'bands', label: 'Bands' },
+  { id: 'electronic', label: 'Electronic' },
+  { id: 'afro-tech', label: 'Afro Tech' },
+  { id: 'amapiano', label: 'Amapiano' },
+];
+
+export const browseCategories = [
+  { id: 'all', label: 'Filter' },
+  { id: 'vocalist', label: 'Vocalist' },
+  { id: 'artists', label: 'Artists' },
+  { id: 'djs', label: 'DJs' },
+  { id: 'performers', label: 'Performers' },
+];

@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Moonspot Dark Purple Theme */
+    --background: 258 58% 15%;
+    --foreground: 0 0% 100%;
+    --card: 258 52% 19%;
+    --card-foreground: 0 0% 100%;
+    --popover: 258 52% 19%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 258 73% 56%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 258 40% 25%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 258 30% 22%;
+    --muted-foreground: 240 15% 70%;
+    --accent: 258 73% 56%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 18 100% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 258 30% 25%;
+    --input: 258 40% 22%;
+    --ring: 258 73% 56%;
+    --radius: 0.75rem;
+    
+    /* Custom Moonspot Colors */
+    --moonspot-bg: #1A1040;
+    --moonspot-accent: #6C3FE0;
+    --moonspot-card: #221550;
+    --moonspot-input: #2A1B60;
+    --moonspot-text: #FFFFFF;
+    --moonspot-text-muted: #A0A0C0;
+    --moonspot-status-active: #00C37A;
+    --moonspot-status-cancelled: #FF6B35;
+    --moonspot-status-visited: #7B7B9D;
+    
+    --sidebar-background: 258 58% 15%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 258 73% 56%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 258 40% 25%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 258 30% 25%;
+    --sidebar-ring: 258 73% 56%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#6C3FE0] to-[#9B6FFF];
+  }
+  
+  .glass-card {
+    @apply bg-[#221550]/80 backdrop-blur-xl border border-white/10;
+  }
+  
+  .status-active {
+    @apply bg-[#00C37A]/20 text-[#00C37A] border border-[#00C37A]/30;
+  }
+  
+  .status-cancelled {
+    @apply bg-[#FF6B35]/20 text-[#FF6B35] border border-[#FF6B35]/30;
+  }
+  
+  .status-pending {
+    @apply bg-[#FFA500]/20 text-[#FFA500] border border-[#FFA500]/30;
+  }
+  
+  .status-visited {
+    @apply bg-[#7B7B9D]/20 text-[#7B7B9D] border border-[#7B7B9D]/30;
+  }
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1A1040;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6C3FE0;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7B4FF0;
+}
+
+/* Hide scrollbar for horizontal scroll containers */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
