@@ -29,6 +29,8 @@ Once set up, your app will be available at:
 - **Production**: https://siyanda-khanyile.github.io/moonspot/
 - **Staging**: https://siyanda-khanyile.github.io/moonspot-staging/ (when develop branch is pushed)
 
+> **Status**: GitHub Pages is now enabled and configured for automatic deployment.
+
 ## Manual Deployment
 
 If you need to deploy manually:
