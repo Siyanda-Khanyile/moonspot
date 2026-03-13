@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { OnboardingScreen } from '@/pages/auth/OnboardingScreen';
 import { SignUpScreen } from '@/pages/auth/SignUpScreen';
 import { SignInScreen } from '@/pages/auth/SignInScreen';
@@ -51,7 +51,7 @@ function App() {
   // Auth flow state
   const [authScreen, setAuthScreen] = useState<AuthScreen>('onboarding');
   
-  // Organiser state
+  // Initialize screens based on authentication state
   const [organiserScreen, setOrganiserScreen] = useState<OrganiserScreen>('discovery');
   const [selectedArtist, setSelectedArtist] = useState<Artist | null>(null);
   const [selectedChat, setSelectedChat] = useState<Chat | null>(null);
@@ -60,14 +60,6 @@ function App() {
   const [adminScreen, setAdminScreen] = useState<AdminScreen>('dashboard');
   const [selectedAdminBooking, setSelectedAdminBooking] = useState<Booking | null>(null);
   const [editingArtist, setEditingArtist] = useState<Artist | null>(null);
-
-  // Reset to discovery when authenticated
-  useEffect(() => {
-    if (isAuthenticated) {
-      setOrganiserScreen('discovery');
-      setAdminScreen('dashboard');
-    }
-  }, [isAuthenticated]);
 
   // Auth Flow Handlers
   const handleAuthSuccess = () => {
