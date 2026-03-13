@@ -6,11 +6,15 @@ To enable automatic deployment to GitHub Pages, follow these steps:
 
 ### 1. Enable GitHub Pages
 
+**IMPORTANT: You must enable GitHub Pages manually first:**
+
 1. Go to your repository on GitHub: https://github.com/Siyanda-Khanyile/moonspot
 2. Click on **Settings** tab
 3. Scroll down to **Pages** section in the left sidebar
-4. Under **Source**, select **GitHub Actions**
-5. Save the settings
+4. Under **Source**, select **GitHub Actions** (NOT "Deploy from a branch")
+5. Click **Save**
+
+**Alternative: The workflow will attempt to enable Pages automatically, but manual setup is more reliable.**
 
 ### 2. Enable GitHub Actions
 
@@ -75,11 +79,21 @@ Monitor build status through GitHub Actions:
 
 ## Troubleshooting
 
+### Troubleshooting
+
 ### Common Issues
 
-1. **404 on GitHub Pages**: Ensure the base path in `vite.config.ts` matches your repository name
-2. **Build Failures**: Check the Actions logs for specific error messages
-3. **Assets Not Loading**: Verify the base URL configuration for production
+1. **"Get Pages site failed" Error**: 
+   - Go to repository Settings → Pages
+   - Ensure Source is set to "GitHub Actions" (not "Deploy from a branch")
+   - If Pages is disabled, enable it first
+   - Wait a few minutes and retry the workflow
+
+2. **404 on GitHub Pages**: Ensure the base path in `vite.config.ts` matches your repository name
+
+3. **Build Failures**: Check the Actions logs for specific error messages
+
+4. **Assets Not Loading**: Verify the base URL configuration for production
 
 ### Debug Steps
 
